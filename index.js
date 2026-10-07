@@ -7,18 +7,38 @@ tweetBtn.addEventListener('click', function(){
 })
 
 document.addEventListener('click', function(e){
-    console.log('like', e.target.dataset.like)
-     
+    if(e.target.dataset.like){
+       handleLikeClick(e.target.dataset.like) 
+    }
+})
+
+function handleLikeClick(tweetId){
+    // console.log(tweetId)
 /*
 Challenge:
-1. When a like icon is clicked, this function 
-   should log out the contents of the 'data-like' 
-   data-attribute.
-
-⚠️ Clicking on the page but not on the like icon
-   will log out 'undefined'. That is absolutely fine.
+1. Iterate over tweetsData and use the uuid 
+   saved in tweetId to identify the liked
+   tweet's object. Save that object to a 
+   new const called 'targetTweetObj'.
+⚠️ targetTweetObj should hold an object, NOT
+   an array.
+2. Increment targetTweetObj's 'likes' count 
+   by 1.
+3. Log out targetTweetObj.
 */
-})
+    // const targetTweetObj = tweetsData.likes
+    let targetTweetObj = []
+ for (let likeEl of tweetsData) {
+    
+    if (likeEl.uuid === tweetId) {
+        likeEl.likes ++
+        targetTweetObj = likeEl
+        
+    }
+    
+ }
+ console.log(targetTweetObj)
+}
 
 function getFeedHtml(){
     let feedHtml = ``
