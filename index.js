@@ -12,32 +12,19 @@ document.addEventListener('click', function(e){
     }
 })
 
-function handleLikeClick(tweetId){
-    // console.log(tweetId)
-/*
-Challenge:
-1. Iterate over tweetsData and use the uuid 
-   saved in tweetId to identify the liked
-   tweet's object. Save that object to a 
-   new const called 'targetTweetObj'.
-⚠️ targetTweetObj should hold an object, NOT
-   an array.
-2. Increment targetTweetObj's 'likes' count 
-   by 1.
-3. Log out targetTweetObj.
-*/
-    // const targetTweetObj = tweetsData.likes
-    let targetTweetObj = []
- for (let likeEl of tweetsData) {
+function handleLikeClick(tweetId){ 
+    const targetTweetObj = tweetsData.filter(function(tweet){
+        return tweet.uuid === tweetId
+    })[0]
     
-    if (likeEl.uuid === tweetId) {
-        likeEl.likes ++
-        targetTweetObj = likeEl
-        
+    if (targetTweetObj.isLiked){
+        targetTweetObj.likes--
     }
-    
- }
- console.log(targetTweetObj)
+    else{
+        targetTweetObj.likes++ 
+    }
+    targetTweetObj.isLiked = !targetTweetObj.isLiked
+    render()
 }
 
 function getFeedHtml(){
