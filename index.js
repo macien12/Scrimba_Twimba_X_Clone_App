@@ -1,7 +1,9 @@
-import { tweetsData } from './data.js'
+import { tweetsData as defaultTweets  } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 const localStorageContainer = JSON.parse( localStorage.getItem("tweetsData") )
+
+const tweetsData = localStorageContainer || defaultTweets
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.like){
