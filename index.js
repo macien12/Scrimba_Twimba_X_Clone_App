@@ -33,25 +33,11 @@ if (targetTweetObj && tweetInput.value.trim()) {
         });
     tweetInput.value = ''
     }
-
-    if(tweetId.replies.length > 0){
-            tweetId.replies.forEach(function(reply){
-                repliesHtml+=`
-<div class="tweet-reply">
-    <div class="tweet-inner">
-        <img src="${reply.profilePic}" class="profile-pic">
-            <div>
-                <p class="handle">${reply.handle}</p>
-                <p class="tweet-text">${reply.tweetText}</p>
-            </div>
-        </div>
-</div>
-`
-
-
-
     render()
- console.log(targetTweetObj.replies)
+
+    document.getElementById(
+        `replies-${tweetId}`
+    ).classList.remove('hidden')
 }
  
 function handleLikeClick(tweetId){ 
