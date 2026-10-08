@@ -17,7 +17,9 @@ document.addEventListener('click', function(e){
         handleTweetBtnClick()
     } else if (e.target.dataset.comment) {
         handleCommentClick(e.target.dataset.comment)
-    } 
+    } else if (e.target.dataset.replyform) {
+        handleReplyClick(e.target.dataset.replyform)
+    }
 })
 
 function handleCommentClick(tweetId) {
@@ -171,7 +173,7 @@ function getFeedHtml(){
                 </span>
                 <span class="tweet-detail">
                     <i class="fa-solid fa-reply"
-                    data-reply="${tweet.uuid}"
+                    data-reply-form="${tweet.uuid}"
                     ></i>
                     
                 </span>
