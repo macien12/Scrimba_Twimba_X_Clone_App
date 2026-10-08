@@ -48,7 +48,7 @@ if (targetTweetObj && textValue.value.trim()) {
             tweetText: textValue.value
         });
     textValue.value = ""
-
+    saveTweets()
     render()
 
     document.getElementById(
@@ -86,6 +86,7 @@ function handleRetweetClick(tweetId){
         targetTweetObj.retweets++
     }
     targetTweetObj.isRetweeted = !targetTweetObj.isRetweeted
+    saveTweets()
     render() 
 }
 
@@ -113,9 +114,11 @@ function handleTweetBtnClick(){
             isRetweeted: false,
             uuid: uuidv4()
         })
+    saveTweets()
     render()
     tweetInput.value = ''
     }
+    
 
 }
 
