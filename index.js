@@ -39,8 +39,8 @@ function saveTweets() {
 function handleDeleteClick(tweetId) {
     const tweetIndex  = tweetsData.findIndex(tweet => tweet.uuid === tweetId); 
 
-    if (tweetIndex  !== -1 && tweetIndex.isOwnTweet) {
-        tweetsData.splice(0,1)
+    if (tweetIndex  !== -1 && tweetsData[tweetIndex].isOwnTweet) {
+        tweetsData.splice(tweetIndex,1)
         saveTweets()
         render()
     }
@@ -166,11 +166,6 @@ function getFeedHtml(){
             <div>
                 <p class="handle">${reply.handle}</p>
                 <p class="tweet-text">${reply.tweetText}</p>
-                ${tweet.isOwnTweet ? `
-                <i class="fa-solid fa-trash"
-                data-delete="${tweet.uuid}">
-                </i>
-                ` : ''}
             </div>
         </div>
 </div>
@@ -209,7 +204,14 @@ function getFeedHtml(){
                     <i class="fa-solid fa-reply"
                     data-reply-form="${tweet.uuid}"
                     ></i>
-                    
+
+                </span>
+                <span class="tweet-detail">
+                ${tweet.isOwnTweet ? `
+                <i class="fa-solid fa-trash"
+                data-delete="${tweet.uuid}">
+                </i>
+                ` : ''}
                 </span>
             </div>   
         </div>            
