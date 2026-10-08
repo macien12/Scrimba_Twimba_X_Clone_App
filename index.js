@@ -34,16 +34,17 @@ if (targetTweetObj && textValue.value.trim()) {
             profilePic: `images/scrimbalogo.png`,
             tweetText: textValue.value
         });
-    textValue.innerHTML = ""
+    textValue.value = ""
 
-
+    render()
+    
     document.getElementById(
         `replies-${tweetId}`
     ).classList.remove('hidden')
     }
 
     
-    render()
+    
 
     
 }
