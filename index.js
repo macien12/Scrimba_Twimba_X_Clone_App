@@ -174,7 +174,7 @@ function getFeedHtml(){
     </div>
     <div class="hidden" id="replies-${tweet.uuid}">
         <textarea id="comment-input-${tweet.uuid}" class= "commentEl" placeholder="Write a reply"></textarea>
-        <button id="comment-input-${tweet.uuid}">Comment</button>
+        <button data-comment="${tweet.uuid}">Comment</button>
         ${repliesHtml}
     </div>   
 </div>
