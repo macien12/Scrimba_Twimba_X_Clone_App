@@ -24,6 +24,9 @@ document.addEventListener('click', function(e){
     else if (e.target.dataset.replyForm) {
         handleReplyClick(e.target.dataset.replyForm)
     }
+    else if (e.target.dataset.delete) {
+        handleDeleteClick(e.target.dataset.delete)
+    }
 })
 
 function saveTweets() {
@@ -31,6 +34,16 @@ function saveTweets() {
         "tweetsData",
         JSON.stringify(tweetsData)
     )
+}
+
+function handleDeleteClick(tweetId) {
+    const tweetIndex  = tweetsData.findIndex(tweet => tweet.uuid === tweetId); 
+
+    if (tweetIndex  !== -1 && tweetIndex.isOwnTweet) {
+        tweetsData.splice(0,1)
+        saveTweets()
+        render()
+    }
 }
 
 function handleCommentClick(tweetId) {
@@ -114,6 +127,7 @@ function handleTweetBtnClick(){
             replies: [],
             isLiked: false,
             isRetweeted: false,
+            isOwnTweet: true,
             uuid: uuidv4()
         })
     saveTweets()
@@ -152,6 +166,11 @@ function getFeedHtml(){
             <div>
                 <p class="handle">${reply.handle}</p>
                 <p class="tweet-text">${reply.tweetText}</p>
+                ${tweet.isOwnTweet ? `
+                <i class="fa-solid fa-trash"
+                data-delete="${tweet.uuid}">
+                </i>
+                ` : ''}
             </div>
         </div>
 </div>
