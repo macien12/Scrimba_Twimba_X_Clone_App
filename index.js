@@ -11,7 +11,7 @@ document.addEventListener('click', function(e){
         handleRetweetClick(e.target.dataset.retweet)
     }
     else if(e.target.dataset.reply){
-        handleReplyClick(e.target.dataset.reply)
+        handleCommentClickVisibility(e.target.dataset.reply)
     }
     else if(e.target.id === 'tweet-btn'){
         handleTweetBtnClick()
@@ -78,6 +78,10 @@ function handleRetweetClick(tweetId){
 }
 
 function handleReplyClick(replyId){
+    document.getElementById(`comment-form-${replyId}`).classList.toggle('hidden')
+}
+
+function handleCommentClickVisibility(replyId){
     document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
 }
 
@@ -174,9 +178,12 @@ function getFeedHtml(){
             </div>   
         </div>            
     </div>
-    <div class="hidden" id="replies-${tweet.uuid}">
+    <div class="hidden" id="comment-form-${tweet.uuid}">
         <textarea id="comment-input-${tweet.uuid}" class= "commentEl" placeholder="Write a reply"></textarea>
         <button data-comment="${tweet.uuid}">Comment</button>
+        
+    </div>
+    <div class="hidden" id="replies-${tweet.uuid}">
         ${repliesHtml}
     </div>   
 </div>
