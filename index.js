@@ -40,15 +40,27 @@ function saveTweets() {
 
 function handleDeleteReply(ids) {
 
+    const [tweetId, replyId] = ids.split(':')
+
     const targetTweet = tweetsData.find(
         tweet => tweet.uuid === tweetId
     )
-    const [tweetId, replyId] = ids.split(':')
 
-    if (targetTweet  !== -1 && targetTweet.isOwnReply) {
-        targetTweet.replies.splice(tweetIndex,1)
+    if (!targetTweet) return
+
+    const replyIndex = targetTweet.replies.findIndex(
+        reply => reply.uuid === replyId
+    )
+    
+
+    if (replyIndex  !== -1 && targetTweet.replies[replyIndex].isOwnReply) {
+        targetTweet.replies.splice(replyIndex,1)
         saveTweets()
         render()
+
+        document.getElementById(
+            `replies-${tweetId}`
+        ).classList.remove('hidden')
     }
 
 
