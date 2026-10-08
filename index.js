@@ -14,7 +14,7 @@ document.addEventListener('click', function(e){
     else if(e.target.id === 'tweet-btn'){
         handleTweetBtnClick()
     } else if (e.target.dataset.comment) {
-        handleCommentClick()
+        handleCommentClick(e.target.dataset.comment)
     }
 })
 
