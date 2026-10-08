@@ -24,6 +24,13 @@ document.addEventListener('click', function(e){
     }
 })
 
+function saveTweets() {
+    localStorage.setItem(
+        "tweetsData",
+        JSON.stringify(tweetsData)
+    )
+}
+
 function handleCommentClick(tweetId) {
 
     const targetTweetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
@@ -63,6 +70,7 @@ function handleLikeClick(tweetId){
         targetTweetObj.likes++ 
     }
     targetTweetObj.isLiked = !targetTweetObj.isLiked
+    saveTweets()
     render()
 }
 
