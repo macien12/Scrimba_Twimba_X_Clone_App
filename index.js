@@ -24,7 +24,9 @@ function handleCommentClick(tweetId) {
     const targetTweetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
 
     const tweetInput = document.getElementById('tweet-input')
-if (targetTweetObj) {
+
+
+if (targetTweetObj && tweetInput.value.trim()) {
         targetTweetObj.replies.push({
             handle: `@Scrimba`,
             profilePic: `images/scrimbalogo.png`,
