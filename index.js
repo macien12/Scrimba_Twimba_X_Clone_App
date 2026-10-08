@@ -15,7 +15,7 @@ document.addEventListener('click', function(e){
         handleTweetBtnClick()
     } else if (e.target.dataset.comment) {
         handleCommentClick(e.target.dataset.comment)
-    }
+    } 
 })
 
 function handleCommentClick(tweetId) {
@@ -37,16 +37,12 @@ if (targetTweetObj && textValue.value.trim()) {
     textValue.value = ""
 
     render()
-    
+
     document.getElementById(
         `replies-${tweetId}`
     ).classList.remove('hidden')
     }
 
-    
-    
-
-    
 }
  
 function handleLikeClick(tweetId){ 
@@ -177,8 +173,8 @@ function getFeedHtml(){
         </div>            
     </div>
     <div class="hidden" id="replies-${tweet.uuid}">
-        <textarea id="comment-input-${tweet.uuid}" placeholder="Write a reply"></textarea>
-
+        <textarea id="comment-input-${tweet.uuid}" class= "commentEl" placeholder="Write a reply"></textarea>
+        <button id="comment-input-${tweet.uuid}">Comment</button>
         ${repliesHtml}
     </div>   
 </div>

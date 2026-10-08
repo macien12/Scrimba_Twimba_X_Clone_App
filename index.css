@@ -130,3 +130,17 @@ button{
 .hidden{
     display: none;
 }
+
+/* textarea */
+
+.commentEl {
+
+    border: 1px solid #0F8CDF;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.commentEl:focus {
+    border: none;
+    
+}
