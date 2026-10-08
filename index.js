@@ -167,7 +167,7 @@ function getFeedHtml(){
                 </span>
                 <span class="tweet-detail">
                     <i class="fa-solid fa-reply"
-                    data-comment="${tweet.uuid}"
+                    data-reply="${tweet.uuid}"
                     ></i>
                     
                 </span>
