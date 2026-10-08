@@ -19,7 +19,6 @@ document.addEventListener('click', function(e){
 })
 
 function handleCommentClick(tweetId) {
-    console.log("test")
 
     const targetTweetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
 
@@ -34,6 +33,23 @@ if (targetTweetObj && tweetInput.value.trim()) {
         });
     tweetInput.value = ''
     }
+
+    if(tweetId.replies.length > 0){
+            tweetId.replies.forEach(function(reply){
+                repliesHtml+=`
+<div class="tweet-reply">
+    <div class="tweet-inner">
+        <img src="${reply.profilePic}" class="profile-pic">
+            <div>
+                <p class="handle">${reply.handle}</p>
+                <p class="tweet-text">${reply.tweetText}</p>
+            </div>
+        </div>
+</div>
+`
+
+
+
     render()
  console.log(targetTweetObj.replies)
 }
