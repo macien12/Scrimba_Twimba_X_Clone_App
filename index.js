@@ -1,6 +1,8 @@
 import { tweetsData } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
+const localStorageContainer = JSON.parse( localStorage.getItem("tweetsData") )
+
 document.addEventListener('click', function(e){
     if(e.target.dataset.like){
        handleLikeClick(e.target.dataset.like) 
@@ -29,7 +31,7 @@ function handleCommentClick(tweetId) {
 )
 
 if (targetTweetObj && textValue.value.trim()) {
-        targetTweetObj.replies.push({
+        targetTweetObj.replies.unshift({
             handle: `@Scrimba`,
             profilePic: `images/scrimbalogo.png`,
             tweetText: textValue.value
