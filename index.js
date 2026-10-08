@@ -15,10 +15,12 @@ document.addEventListener('click', function(e){
     }
     else if(e.target.id === 'tweet-btn'){
         handleTweetBtnClick()
-    } else if (e.target.dataset.comment) {
+    } 
+    else if (e.target.dataset.comment) {
         handleCommentClick(e.target.dataset.comment)
-    } else if (e.target.dataset.replyform) {
-        handleReplyClick(e.target.dataset.replyform)
+    } 
+    else if (e.target.dataset.replyForm) {
+        handleReplyClick(e.target.dataset.replyForm)
     }
 })
 
