@@ -36,8 +36,8 @@ function handleCommentClick(tweetId) {
 
 if (targetTweetObj && textValue.value.trim()) {
         targetTweetObj.replies.unshift({
-            handle: `@Scrimba`,
-            profilePic: `images/scrimbalogo.png`,
+            handle: `@macien`,
+            profilePic: `images/Maciej.jpg`,
             tweetText: textValue.value
         });
     textValue.value = ""
