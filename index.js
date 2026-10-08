@@ -24,20 +24,28 @@ function handleCommentClick(tweetId) {
 
     const tweetInput = document.getElementById('tweet-input')
 
+    const textValue = document.getElementById(
+    `comment-input-${tweetId}`
+)
 
-if (targetTweetObj && tweetInput.value.trim()) {
+if (targetTweetObj && textValue.value.trim()) {
         targetTweetObj.replies.push({
             handle: `@Scrimba`,
             profilePic: `images/scrimbalogo.png`,
-            tweetText: tweetInput.value
+            tweetText: textValue.value
         });
-    tweetInput.value = ''
-    }
-    render()
+    textValue.innerHTML = ""
+
 
     document.getElementById(
         `replies-${tweetId}`
     ).classList.remove('hidden')
+    }
+
+    
+    render()
+
+    
 }
  
 function handleLikeClick(tweetId){ 
@@ -168,6 +176,8 @@ function getFeedHtml(){
         </div>            
     </div>
     <div class="hidden" id="replies-${tweet.uuid}">
+        <textarea id="comment-input-${tweet.uuid}" placeholder="Write a reply"></textarea>
+
         ${repliesHtml}
     </div>   
 </div>
