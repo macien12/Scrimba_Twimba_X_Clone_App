@@ -13,8 +13,28 @@ document.addEventListener('click', function(e){
     }
     else if(e.target.id === 'tweet-btn'){
         handleTweetBtnClick()
+    } else if (e.target.dataset.comment) {
+        handleCommentClick()
     }
 })
+
+function handleCommentClick(tweetId) {
+    console.log("test")
+
+    const targetTweetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
+
+    const tweetInput = document.getElementById('tweet-input')
+if (targetTweetObj) {
+        targetTweetObj.replies.push({
+            handle: `@Scrimba`,
+            profilePic: `images/scrimbalogo.png`,
+            tweetText: tweetInput.value
+        });
+    tweetInput.value = ''
+    }
+    render()
+ console.log(targetTweetObj.replies)
+}
  
 function handleLikeClick(tweetId){ 
     const targetTweetObj = tweetsData.filter(function(tweet){
