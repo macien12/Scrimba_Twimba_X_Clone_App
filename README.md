@@ -20,19 +20,6 @@ A small social feed app built with HTML, CSS, and vanilla JavaScript as part of 
 - UUID via JSPM for identifiers on new tweets and replies.
 - Font Awesome for icons and Google Fonts for the Roboto typeface.
 
-## Getting started
-
-Install Node.js and npm, then run these commands from the project directory:
-
-```bash
-npm install
-npm start
-```
-
-Open the local URL printed by Vite in your browser. You can also use `npm run dev` to start the development server.
-
-The app loads UUID, icons, and fonts from external services, so an internet connection is needed to load those resources.
-
 ## Available commands
 
 | Command | Description |
